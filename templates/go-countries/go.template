@@ -1,0 +1,30 @@
+package gocountries
+
+type Country struct {
+    Alpha3 string
+    Alpha2 string
+    ID int32
+    TH string
+    EN string
+}
+
+func GetCountryFromAlpha3(alpha3 string) (Country) {
+    switch alpha3 {
+        << for-block begin>>
+        case "{{alpha3}}": 
+            return Country{Alpha2: "{{alpha2}}", Alpha3: "{{alpha3}}", ID: {{id}}, EN:"{{en}}", TH:"{{th}}"}
+        << for-block end >>
+        default:
+            return Country{}
+    }
+}
+
+var alpha3CountryMap map[string]Country = map[string]Country{
+    << for-block begin>>
+    "{{alpha3}}": {Alpha2: "{{alpha2}}", Alpha3: "{{alpha3}}", ID: {{id}}, EN:"{{en}}", TH:"{{th}}"},
+    << for-block end >>
+}
+
+func GetCountryFromAlpha3Map(alpha3 string) (Country, error) {
+    return alpha3CountryMap[alpha3], nil
+}

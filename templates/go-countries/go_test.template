@@ -1,0 +1,36 @@
+package gocountries_test
+
+import (
+	"testing"
+
+	gocountries "github.com/puttsk/go-countries"
+)
+
+func TestGetCountryFromAlpha3(t *testing.T) {
+    var c gocountries.Country
+
+    << for-block begin >>
+	c = gocountries.GetCountryFromAlpha3("{{alpha3}}")
+    if c.ID != {{id}} {
+		t.Errorf("invalid value: expect: %d actual: %d", {{id}}, c.ID)
+	}
+    if c.EN != "{{en}}" {
+		t.Errorf("invalid value: expect: %s actual: %s", "{{en}}", c.EN)
+	}
+	if c.TH != "{{th}}" {
+		t.Errorf("invalid value: expect: %s actual: %s", "{{th}}", c.TH)
+	}
+    << for-block end >>
+}
+
+func BenchmarkGetCountryFromAlpha3(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		gocountries.GetCountryFromAlpha3("tha")
+	}
+}
+
+func BenchmarkGetCountryFromAlpha3Map(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		gocountries.GetCountryFromAlpha3Map("tha")
+	}
+}
