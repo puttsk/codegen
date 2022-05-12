@@ -3,7 +3,7 @@
 
 # Codegen
 
-Codegen is an utility for generating an output based on template files and json data. The original goal is used for generating static code for [gocountries](https://github.com/puttsk/gocountries) project.
+Codegen is a simple source-to-source utility for generating a code based on json data. This is useful for embeded data into a code for a small to medium data set. The original goal is used for generating static code for [gocountries](https://github.com/puttsk/gocountries) project.
 
 ## Installation
 
